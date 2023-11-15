@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Виселица!</title>
+</head>
+
+<body>
+
+	<canvas id="canvas" width="600" height="600"></canvas>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<h1>Виселица</h1>
+
+	<script>
+
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+
+	var circle = function (x, y, radius, fillCircle) {
+ 		ctx.beginPath();
+ 		ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+ 		ctx.stroke();
+ 	}
+ 	var man = function () {
+ 		if (numberOfAttempts === word.length*1) {
+ 			ctx.strokeStyle = "Black";
+			ctx.lineWidth = 4;
+			ctx.beginPath();
+			ctx.moveTo(140, 300);
+			ctx.lineTo(240, 300);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*2) {
+ 			ctx.beginPath();
+			ctx.moveTo(190, 300);
+			ctx.lineTo(190, 100);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*3) {
+ 			ctx.beginPath();
+			ctx.moveTo(190, 100);
+			ctx.lineTo(90, 100);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*4) {
+ 			ctx.beginPath();
+			ctx.moveTo(90, 100);
+			ctx.lineTo(90, 130);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*5) {
+ 			ctx.lineWidth = 4;
+			ctx.strokeStyle = "Black";
+			ctx.fillStyle = "Black";
+			circle(90, 150, 20, false);
+ 		} else if (numberOfAttempts === word.length*6) {
+ 			ctx.beginPath();
+			ctx.moveTo(90, 170);
+			ctx.lineTo(90, 250);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*7) {
+ 			ctx.beginPath();
+			ctx.moveTo(90, 250);
+			ctx.lineTo(130, 290);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*8) {
+ 			ctx.beginPath();
+			ctx.moveTo(90, 250);
+			ctx.lineTo(50, 290);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*9) {
+ 			ctx.beginPath();
+			ctx.moveTo(90, 190);
+			ctx.lineTo(50, 230);
+			ctx.stroke();
+ 		} else if (numberOfAttempts === word.length*10) {
+ 			ctx.beginPath();
+			ctx.moveTo(90, 190);
+			ctx.lineTo(130, 230);
+			ctx.stroke();
+ 		}
+ 	}
+
+
+
+	
+	var words = [
+		"программа",
+		"макака",
+		"прекрасный",
+		"оладушек",
+		"красавица",
+		"котик",
+		"телефон"
+		];
+
+	var word = words[Math.floor(Math.random() * words.length)];
+	var answerArray = [];
+	for (var i = 0; i < word.length; i ++) {
+		answerArray[i] = "_";
+	}
+
+	var remainingLetters = word.length;
+	var numberOfAttempts = 0;
+
+	while (remainingLetters  > 0) {
+		alert(answerArray.join(" "));
+		if (numberOfAttempts >= (word.length*10)) {
+					alert("Попытки закончились. Вы проиграли");
+					break;
+				}
+		var guess = prompt("Угадайте букву или нажмите Отмена для выхода из игры").toLowerCase();
+
+		if (guess === null) {
+			break;
+		} else if (guess.length !== 1) {
+			alert("Пожалуйста, введите только одну букву.")
+		} else {
+			for (var j = 0; j < word.length; j++) {
+				if (answerArray[j] === guess ) {
+					alert("Эта буква уже угадана. Пожалуйста, введите другую букву");
+				} else if (word[j] === guess) {
+					answerArray[j] = guess;
+					remainingLetters--;
+				} else if (word[j] !== guess) {
+
+					numberOfAttempts++;	
+					man();
+				}
+			}
+		}
+	}
+	alert(answerArray.join(" "));
+	alert("Было загадано слово " + word);
+
+
+	</script>
+</body>
+</html>

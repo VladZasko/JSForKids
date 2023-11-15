@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Изучаем DOM</title>
+</head>
+
+<body>
+	<h1 id="main-heading">Привет мир!</h1>
+	<p id="main-pharagraf">Проверка команд</p>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+		
+		var DoHomeworkAlarm = function () {
+		alert("Эй! Пора делать домашку!");
+	};
+		var timeoutId = setTimeout(DoHomeworkAlarm, 6000);
+
+		clearTimeout(timeoutId);
+
+	</script>
+
+</body>
+</html>

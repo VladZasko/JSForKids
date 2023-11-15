@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Изучаем DOM</title>
+</head>
+
+<body>
+	<h1 id="main-heading">Привет мир!</h1>
+	<p id="main-pharagraf">Проверка команд</p>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+		var friendName = ["Bob", "Nik", "Kent"];
+
+		$("#main-heading").text("My friends")
+
+		for (var i = 0; i < friendName.length; i++) {
+			$("body").append("<p>" + friendName[i] + "</p>");
+
+		}
+
+		for (var j = 0; j < 5; j++) {
+
+			/*var fadeTime = (j+1)*1000;*/
+
+			/*$("#main-heading").fadeOut(2000).delay(5000).fadeIn(2000);*/
+
+			$("h1").fadeTo(2000, 0.1);
+		}
+		$("p").hide().fadeIn(3000);
+		
+		
+	</script>
+
+</body>
+</html>

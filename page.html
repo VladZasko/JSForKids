@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Моя первая настоящая HTML-страничка</title>
+</head>
+
+<body>
+	<h1 id="main-heading">Привет, мир!</h1>
+	<p>Моя первая веб-страничка.</p>
+	<script>
+	
+	var alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+	var randomString = "";
+
+	while (randomString.length<27) {
+		var randomWord = alphabet[Math.floor(Math.random() * alphabet.length)];
+		randomString += randomWord;
+	}
+	console.log(randomString);
+	</script>
+</body>
+</html>

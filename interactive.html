@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<meta charset="UTF-8">
+ 	<title>Интерактивное программирование</title>
+</head>
+<body>
+ 	<h1 id="heading">Привет, мир!</h1>
+ 	<script src="https://code.jquery.com/jquery-2.1.0.js"> 
+ 	</script>
+ 	<script>
+ 		var direction = "right";
+ 		var Offset = 0;
+
+ 		var moveHeading = function () {
+
+ 			if(direction==="right")	{
+ 			$("#heading").offset({ left: Offset});
+ 			Offset++;
+			if (Offset>200) {
+				Offset = 0;
+				direction = "Down";
+				}
+			} else if (direction === "Down") {
+				$("#heading").offset({ top: Offset});
+				Offset++;
+				if (Offset>200) {
+					Offset=200;
+					direction="Left";
+				}
+			} else if (direction === "Left") {
+				$("#heading").offset({ left: Offset});
+				Offset--;
+				if (Offset===0) {
+					Offset=200;
+					direction="Up";
+				}
+			} else if (direction==="Up") {
+				$("#heading").offset({ top: Offset});
+				Offset--;
+				}
+				if (Offset < 0) {
+					Offset = 0;
+					direction = "right";
+				}
+			};
+		
+		
+
+		var speed = 10;
+		var click = 0;
+		var clickStop = setInterval(moveHeading, 30);
+
+ 		$("#heading").click(function (event) {
+ 			clearTimeout(clickStop);
+ 			click++;			
+ 			if (click < 10) {
+ 				$("#heading").text(click);
+ 				speed= speed-3;
+ 				clickStop = setInterval (moveHeading, speed);
+ 			} else if (click===10) {
+ 				$("#heading").text("Вы победили!");
+ 			}
+		});
+ 	</script>
+</body>
+</html>
