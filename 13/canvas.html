@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<title>Canvas</title>
+</head>
+
+<body>
+	<canvas id="canvas" width="1000" height="1000"></canvas>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		ctx.strokeStyle = "DeepPink";
+		ctx.lineWidth = 4;
+		ctx.strokeRect(10, 10, 302, 152);
+		ctx.fillStyle = "White";
+		ctx.fillRect(11, 11, 300, 50);
+		ctx.fillStyle = "Red";
+		ctx.fillRect(11, 61, 300, 50);
+		ctx.fillStyle = "White";
+		ctx.fillRect(11, 111, 300, 50);
+
+
+		ctx.strokeStyle = "Black";
+		ctx.lineWidth = 4;
+		ctx.strokeRect(30, 172, 20, 20);
+
+		ctx.strokeStyle = "Black";
+		ctx.lineWidth = 4;
+		ctx.beginPath();
+		ctx.moveTo(40, 192);
+		ctx.lineTo(40, 242);
+		ctx.lineTo(10, 272);
+		ctx.moveTo(40, 242);
+		ctx.lineTo(70, 272);
+		ctx.moveTo(40, 202);
+		ctx.lineTo(70, 232);
+		ctx.moveTo(40, 202);
+		ctx.lineTo(10, 232);
+		ctx.lineTo(10, 10);
+		ctx.stroke();
+
+		ctx.fillStyle = "Blue";
+		ctx.beginPath();
+		ctx.moveTo(200, 272);
+		ctx.lineTo(200, 232);
+		ctx.lineTo(230, 202);
+		ctx.lineTo(260, 232);
+		ctx.lineTo(260, 272);
+		ctx.lineTo(200, 272);
+		ctx.fill();
+
+		var circle = function (x, y, radius, fillCircle) {
+ 		ctx.beginPath();
+ 		ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+ 		ctx.stroke();
+
+ 		if (fillCircle === true) {
+ 		ctx.fill();
+ 		}
+ 		
+		};
+
+		ctx.lineWidth = 4;
+		ctx.strokeStyle = "Black";
+		ctx.fillStyle = "Black";
+		circle(120, 192, 20, false);
+		circle(120, 252, 40, false);
+		circle(110, 187, 3, true);
+		circle(130, 187, 3, true);
+		circle(120, 232, 3, true);
+		circle(120, 252, 3, true);
+		circle(120, 272, 3, true);
+		ctx.strokeStyle = "Orange";
+		ctx.fillStyle = "Orange";
+		circle(120, 197, 3, true);
+
+		var drawSnowman = function (x, y) {
+ 		ctx.beginPath();
+ 		ctx.lineWidth = 4;
+		ctx.strokeStyle = "Black";
+		ctx.fillStyle = "Black";
+		circle(x, y, 20, false);
+		circle(x, y+60, 40, false);
+		circle(x-10, y-5, 3, true);
+		circle(x+10, y-5, 3, true);
+		circle(x, y+40, 3, true);
+		circle(x, y+60, 3, true);
+		circle(x, y+80, 3, true);
+		ctx.strokeStyle = "Orange";
+		ctx.fillStyle = "Orange";
+		circle(x, y+5, 3, true);
+ 		ctx.stroke();
+		};
+
+		var points = [[50, 50], [50, 100], [25, 120], [100, 50],
+[70, 90], [100, 90], [70, 120]];
+		
+
+
+		var drawPoints = function(points) {
+			ctx.strokeStyle = "Black";
+			ctx.lineWidth = 4;
+			ctx.beginPath();
+			ctx.moveTo(points[0][0],points[0][1]);
+			/*ctx.lineTo(points[1][0],points[1][1]);
+			ctx.lineTo(points[2][0],points[2][1]);
+			ctx.lineTo(points[3][0],points[3][1]);
+			ctx.lineTo(points[4][0],points[4][1]);*/
+
+			for (var i = 0; i < points.length; i++) {
+ 			ctx.lineTo(points[i][0],points[i][1]);
+			}
+
+			ctx.stroke();
+		}
+		drawPoints(points);
+			ctx.fillStyle = "Black";
+		 $("canvas").mousemove(function (event) {
+      circle(event.offsetX, event.offsetY, 3, true);
+    });
+ </script
+
+ 	</script>
+</body>
+</html>
