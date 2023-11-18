@@ -75,23 +75,23 @@
 
         Ball.prototype.setSize = function (size) {
             if (size === "increase") {
-                this.size += 1;
+                this.size++;
             } else if (size === "reduce") {
                 this.size -=1;
             }
             if (this.size < 1) {
-                this.size = 1;
+                this.size--;
             }
         };
 
         Ball.prototype.setSpeed = function (speed) {
             if (speed === "accelerate") {
-                this.speed += 1;
+                this.speed++;
             } else if (speed === "slow down") {
                 this.speed -= 1;
             }
             if (this.speed < 1) {
-                this.speed = 1;
+                this.speed--;
             }
         };
 
