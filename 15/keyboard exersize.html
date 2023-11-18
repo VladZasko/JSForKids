@@ -28,21 +28,28 @@
             this.y = height / 2;
             this.xSpeed = 5;
             this.ySpeed = 0;
+            this.speed = 5;
+        };
+
+        Ball.prototype.setSpeed = function (newSpeed) {
+            if (newSpeed !== undefined) {
+                this.speed = newSpeed;
+            }
         };
 
         Ball.prototype.move = function () { //обновляем позицию мяча соответственно его скорочти
             this.x += this.xSpeed;
             this.y += this.ySpeed;
 
-            if (this.x === 0) {
-                this.xSpeed = 5;
+            if (this.x < 0) {
+                this.xSpeed = this.speed;
             } else if (this.x > width) {
-                this.xSpeed = -5;
+                this.xSpeed = -this.speed;
             }
             if (this.y < 0) {
-                this.ySpeed = 5;
+                this.ySpeed = this.speed;
             } else if (this.y > height) {
-                this.ySpeed = -5;
+                this.ySpeed = -this.speed;
             }
         };
 
@@ -53,15 +60,15 @@
         Ball.prototype.setDirection = function (direction) { // Задаем направление движения по строке с названием действия
             if (direction === "up") {
                 this.xSpeed = 0;
-                this.ySpeed = -5;
+                this.ySpeed = -this.speed;
             } else if (direction === "down") {
                 this.xSpeed = 0;
-                this.ySpeed = 5;
+                this.ySpeed = this.speed;
             } else if (direction === "left") {
-                this.xSpeed = -5;
+                this.xSpeed = -this.speed;
                 this.ySpeed = 0;
             } else if (direction === "right") {
-                this.xSpeed = 5;
+                this.xSpeed = this.speed;
                 this.ySpeed = 0;
             } else if (direction === "stop") {
                 this.xSpeed = 0;
@@ -79,9 +86,25 @@
             40: "down"
         };
 
+        var speeds = {
+            49: 1,
+            50: 2,
+            51: 3,
+            52: 4,
+            53: 5,
+            54: 6,
+            55: 7,
+            56: 8,
+            57: 9
+        };
+
         $("body").keydown(function (event) {  //вызов метода keydown для обработки событий клавиши
+            var speed = speeds[event.keyCode];
+            ball.setSpeed(speed);
             var direction = keyActions[event.keyCode]; 
             ball.setDirection(direction);
+            
+
         });
 
         setInterval(function () { // Функция анимации, вызывается раз в 30 мс
