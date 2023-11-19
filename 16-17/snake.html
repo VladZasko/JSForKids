@@ -79,6 +79,11 @@
             this.nextDirection = "right"
         };
 
+        Snake.prototype.draw = function () {
+            for (var i = 0; i < this.segments.length; i++) {
+                this.segments[i].drawSquare("Blue");
+            }
+        };
         
     </script>
 </body>
