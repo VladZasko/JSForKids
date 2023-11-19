@@ -57,8 +57,14 @@
             ctx.fillRect(x, y, blockSize, blockSize);
         };
 
-        var sampleBlock = new Block(3, 4);
-        sampleBlock.drawSquare("LightBlue");
+        Block.prototype.drawCircle = function() {
+            var centerX = this.col * blockSize + blockSize / 2;
+            var centerY = this.row * blockSize + blockSize / 2;
+            ctx.fillStyle = color;
+            circle(centerX, centerY, blockSize / 2, true);
+        };
+
+        
 
     </script>
 </body>
