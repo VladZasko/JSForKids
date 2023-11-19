@@ -49,6 +49,12 @@
         gameOver();
         drawScore();
 
+        var exersize2 = setInterval ( function() {
+            ctx.clearRect(blockSize, blockSize, 150, 50) ;
+            score++;
+            drawScore();
+        }, 100);
+
     </script>
 </body>
 </html>
