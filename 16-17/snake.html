@@ -37,7 +37,7 @@
         };
 
         var gameOver = function () {
-            //clearInterval(intervalId);
+            clearInterval(intervalId);
             ctx.font = "60px Courier";
             ctx.fillStyle = "Black";
             ctx.textAlign = "center";
@@ -45,15 +45,12 @@
             ctx.fillText("Конец игры", width / 2, height / 2 );
         };
 
-        drawBorder();
-        gameOver();
-        drawScore();
+        var Block = function (col, row) {
+            this.col = col;
+            this.row = row;
+        };
 
-        var exersize2 = setInterval ( function() {
-            ctx.clearRect(blockSize, blockSize, 150, 50) ;
-            score++;
-            drawScore();
-        }, 100);
+        var sampleBlock = new Block(5, 5);
 
     </script>
 </body>
