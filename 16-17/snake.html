@@ -13,6 +13,7 @@
 
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
+        
         var width = canvas.width;
         var height = canvas.height;
         var blockSize = 10;
@@ -162,6 +163,21 @@
 
             this.nextDirection = newDirection;
         };
+        
+        var Apple = function () {
+            this.position = new Block (10, 10) ;
+        };
+
+        Apple.prototype.draw = function () {
+            this.position.drawCircle("LimeGreen");
+        };
+
+        Apple.prototype.move = function () {
+            var randomCol = Math.floor(Math.random() * (widthInBlock - 2)) + 1;
+            var randomRow = Math.floor(Math.random() * (heightInBlock - 2)) + 1;
+            this.position = new Block(randomCol, randomRow);
+        };
+
 
     </script>
 </body>
